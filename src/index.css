@@ -1,0 +1,59 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+html {
+  scroll-behavior: smooth;
+}
+
+html.dark {
+  color-scheme: dark;
+}
+
+body {
+  margin: 0;
+  min-width: 20rem;
+  background: #d8dee8;
+  font-family: 'IBM Plex Sans', 'Segoe UI', sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html.dark body {
+  background: #0b1220;
+}
+
+a,
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+#root {
+  width: min(1240px, 100%);
+  margin: 0 auto;
+  min-height: 100svh;
+}
+
+h1,
+h2,
+h3,
+p,
+blockquote {
+  margin: 0;
+}
+
+::selection {
+  background: rgba(42, 92, 80, 0.18);
+}
+
+@media (max-width: 960px) {
+  html {
+    font-size: 15px;
+  }
+}
