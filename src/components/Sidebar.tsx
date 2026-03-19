@@ -18,7 +18,7 @@ export function Sidebar() {
           </div>
           <p className="text-sm text-slate-700 dark:text-slate-400 sm:text-base">Software Engineer at Descartes Systems Group</p>
           <a
-            className="group inline-flex min-w-0 items-center gap-2 break-words text-sm text-slate-700 underline-offset-4 transition-colors duration-200 hover:text-slate-900 hover:underline hover:drop-shadow-[0_0_8px_rgba(15,23,42,0.22)] dark:text-slate-400 dark:hover:text-slate-100 dark:hover:drop-shadow-[0_0_10px_rgba(148,163,184,0.28)] sm:text-base"
+            className="group inline-flex min-w-0 items-center gap-2 wrap-break-word text-sm text-slate-700 underline-offset-4 transition-colors duration-200 hover:text-slate-900 hover:underline hover:drop-shadow-[0_0_8px_rgba(15,23,42,0.22)] dark:text-slate-400 dark:hover:text-slate-100 dark:hover:drop-shadow-[0_0_10px_rgba(148,163,184,0.28)] sm:text-base"
             href="mailto:dimitargluharski@gmail.com"
           >
             <FiMail aria-hidden="true" className="text-sm transition-transform duration-200 group-hover:-translate-y-0.5" />
