@@ -1,4 +1,6 @@
-import { FiBriefcase, FiDownload, FiHome, FiTrendingUp } from 'react-icons/fi'
+import { useState } from 'react'
+import { AnimatePresence, motion } from 'framer-motion'
+import { FiBriefcase, FiDownload, FiHome, FiMenu, FiTrendingUp, FiX } from 'react-icons/fi'
 import { NavLink } from 'react-router-dom'
 import { ThemeToggle } from './ThemeToggle'
 
@@ -14,16 +16,105 @@ const navItemActive =
   '!border-slate-900 !bg-slate-900 !text-slate-100 ring-1 ring-slate-900/30 dark:!border-slate-200 dark:!bg-slate-100 dark:!text-slate-900 dark:ring-slate-100/30'
 
 export function TopBar({ isDark, onThemeToggle }: TopBarProps) {
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
+
   return (
-    <header className="mb-6 border-b border-slate-300 pb-4 dark:border-slate-800">
-      <div className="flex flex-wrap items-start justify-between gap-3 lg:items-center">
-        <nav className="flex flex-wrap gap-2.5" aria-label="Main navigation">
+    <header className="relative mb-0 border-b border-slate-300 pb-2 dark:border-slate-800 lg:mb-6 lg:pb-4">
+      <div className="flex items-center justify-between gap-3 lg:hidden">
+        <button
+          type="button"
+          className={`${navItemBase} cursor-pointer`}
+          aria-expanded={isMenuOpen}
+          aria-controls="mobile-main-nav"
+          onClick={() => setIsMenuOpen((prev) => !prev)}
+        >
+          {isMenuOpen ? <FiX aria-hidden="true" className="text-sm" /> : <FiMenu aria-hidden="true" className="text-sm" />}
+          Menu
+        </button>
+        <ThemeToggle isDark={isDark} onToggle={onThemeToggle} />
+      </div>
+
+      <AnimatePresence>
+        {isMenuOpen ? (
+          <motion.button
+            type="button"
+            aria-label="Close menu overlay"
+            className="fixed inset-0 z-30 bg-slate-900/20 backdrop-blur-[1px] lg:hidden"
+            onClick={() => setIsMenuOpen(false)}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.16, ease: 'easeOut' }}
+          />
+        ) : null}
+      </AnimatePresence>
+
+      <AnimatePresence>
+        {isMenuOpen ? (
+          <motion.div
+            id="mobile-main-nav"
+            className="absolute left-0 right-0 top-full z-40 mt-2 grid gap-3 rounded-xl border border-slate-300 bg-slate-50/95 p-3 shadow-lg backdrop-blur-sm dark:border-slate-800 dark:bg-slate-900/95 lg:hidden"
+            initial={{ opacity: 0, y: -10, scale: 0.98 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: -8, scale: 0.98 }}
+            transition={{ type: 'spring', stiffness: 420, damping: 34, mass: 0.65 }}
+          >
+            <nav className="flex flex-col gap-2.5" aria-label="Main navigation">
+              <NavLink
+                to="/"
+                end
+                className={({ isActive }) =>
+                  `${navItemBase} w-full justify-start ${isActive ? navItemActive : ''}`.trim()
+                }
+                onClick={() => setIsMenuOpen(false)}
+              >
+                <FiHome aria-hidden="true" className="text-sm" />
+                Home
+              </NavLink>
+              <NavLink
+                to="/work"
+                className={({ isActive }) =>
+                  `${navItemBase} w-full justify-start ${isActive ? navItemActive : ''}`.trim()
+                }
+                onClick={() => setIsMenuOpen(false)}
+              >
+                <FiBriefcase aria-hidden="true" className="text-sm" />
+                Work
+              </NavLink>
+              <NavLink
+                to="/experience"
+                className={({ isActive }) =>
+                  `${navItemBase} w-full justify-start ${isActive ? navItemActive : ''}`.trim()
+                }
+                onClick={() => setIsMenuOpen(false)}
+              >
+                <FiTrendingUp aria-hidden="true" className="text-sm" />
+                Experience
+              </NavLink>
+              <a
+                href="/CV Dimitar Gluharski.pdf"
+                target="_blank"
+                rel="noreferrer"
+                className={`${navItemBase} w-full justify-start`}
+                onClick={() => setIsMenuOpen(false)}
+              >
+                <FiDownload aria-hidden="true" className="text-sm" />
+                Download CV
+              </a>
+            </nav>
+          </motion.div>
+        ) : null}
+      </AnimatePresence>
+
+      <div className="hidden lg:flex lg:items-start lg:justify-between xl:items-center">
+        <nav className="flex flex-col gap-2.5 lg:flex-row lg:flex-wrap" aria-label="Main navigation">
           <NavLink
             to="/"
             end
             className={({ isActive }) =>
-              `${navItemBase} ${isActive ? navItemActive : ''}`.trim()
+              `${navItemBase} lg:w-auto lg:justify-center ${isActive ? navItemActive : ''}`.trim()
             }
+            onClick={() => setIsMenuOpen(false)}
           >
             <FiHome aria-hidden="true" className="text-sm" />
             Home
@@ -31,8 +122,9 @@ export function TopBar({ isDark, onThemeToggle }: TopBarProps) {
           <NavLink
             to="/work"
             className={({ isActive }) =>
-              `${navItemBase} ${isActive ? navItemActive : ''}`.trim()
+              `${navItemBase} lg:w-auto lg:justify-center ${isActive ? navItemActive : ''}`.trim()
             }
+            onClick={() => setIsMenuOpen(false)}
           >
             <FiBriefcase aria-hidden="true" className="text-sm" />
             Work
@@ -40,8 +132,9 @@ export function TopBar({ isDark, onThemeToggle }: TopBarProps) {
           <NavLink
             to="/experience"
             className={({ isActive }) =>
-              `${navItemBase} ${isActive ? navItemActive : ''}`.trim()
+              `${navItemBase} lg:w-auto lg:justify-center ${isActive ? navItemActive : ''}`.trim()
             }
+            onClick={() => setIsMenuOpen(false)}
           >
             <FiTrendingUp aria-hidden="true" className="text-sm" />
             Experience
@@ -50,14 +143,17 @@ export function TopBar({ isDark, onThemeToggle }: TopBarProps) {
             href="/CV Dimitar Gluharski.pdf"
             target="_blank"
             rel="noreferrer"
-            className={navItemBase}
+            className={`${navItemBase} lg:w-auto lg:justify-center`}
+            onClick={() => setIsMenuOpen(false)}
           >
             <FiDownload aria-hidden="true" className="text-sm" />
             Download CV
           </a>
         </nav>
 
-        <ThemeToggle isDark={isDark} onToggle={onThemeToggle} />
+        <div>
+          <ThemeToggle isDark={isDark} onToggle={onThemeToggle} />
+        </div>
       </div>
     </header>
   )

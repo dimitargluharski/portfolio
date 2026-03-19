@@ -1,5 +1,6 @@
 import {
   FiCloud,
+  FiCode,
   FiCpu,
   FiGitBranch,
   FiGlobe,
@@ -8,6 +9,7 @@ import {
   SiCss,
   SiDocker,
   SiGithub,
+  SiGithubactions,
   SiJavascript,
   SiJira,
   SiNextdotjs,
@@ -27,6 +29,10 @@ export function getTechIcon(tech: string) {
       return <SiTypescript aria-hidden="true" />
     case 'JavaScript':
       return <SiJavascript aria-hidden="true" />
+    case 'C#':
+      return <FiCode aria-hidden="true" />
+    case 'VB':
+      return <FiCode aria-hidden="true" />
     case 'Next.js':
       return <SiNextdotjs aria-hidden="true" />
     case 'Tailwind CSS':
@@ -53,8 +59,12 @@ export function getTechIcon(tech: string) {
       return <FiGlobe aria-hidden="true" />
     case 'CSS':
       return <SiCss aria-hidden="true" />
+    case 'WebGL':
+      return <FiGlobe aria-hidden="true" />
     case 'REST APIs':
       return <FiGlobe aria-hidden="true" />
+    case 'CI/CD':
+      return <SiGithubactions aria-hidden="true" />
     default:
       return <FiGlobe aria-hidden="true" />
   }
@@ -68,8 +78,14 @@ export function getTechColor(tech: string) {
       return 'text-[#f7df1e]'
     case 'TypeScript':
       return 'text-[#3178c6]'
+    case 'C#':
+      return 'text-[#7b3fb9]'
+    case 'VB':
+      return 'text-[#6f42c1]'
     case 'REST APIs':
       return 'text-[#0ea5a6]'
+    case 'CI/CD':
+      return 'text-[#2088ff]'
     case 'Node.js':
       return 'text-[#5fa04e]'
     case 'GitHub':
@@ -94,6 +110,8 @@ export function getTechColor(tech: string) {
       return 'text-[#e34f26]'
     case 'CSS':
       return 'text-[#1572b6]'
+    case 'WebGL':
+      return 'text-[#d97706]'
     case 'Three.js':
       return 'text-slate-900 dark:text-slate-100'
     default:

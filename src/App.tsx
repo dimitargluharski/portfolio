@@ -14,12 +14,18 @@ function AppLayout() {
 
   return (
     <div
-      className={`grid min-h-screen grid-cols-1 border-x lg:grid-cols-[280px_minmax(0,1fr)] ${shellThemeClass}`}
+      className={`grid min-h-screen grid-cols-1 border-x lg:grid-cols-[320px_minmax(0,1fr)] ${shellThemeClass}`}
     >
+      <div className="px-2 pt-2 sm:px-3 sm:pt-2 lg:hidden">
+        <TopBar isDark={isDark} onThemeToggle={cycleTheme} />
+      </div>
+
       <Sidebar />
 
-      <main className="px-4 pb-10 pt-6 sm:px-6 lg:px-10 lg:pb-14 lg:pt-9" id="top">
-        <TopBar isDark={isDark} onThemeToggle={cycleTheme} />
+      <main className="px-4 pb-10 pt-4 sm:px-6 sm:pt-5 lg:px-10 lg:pb-14 lg:pt-9" id="top">
+        <div className="hidden lg:block">
+          <TopBar isDark={isDark} onThemeToggle={cycleTheme} />
+        </div>
         <Outlet />
       </main>
     </div>

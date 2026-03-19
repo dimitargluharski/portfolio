@@ -3,8 +3,8 @@ import { getTechColor, getTechIcon } from '../utils/techIcons'
 
 export function WorkPage() {
   return (
-    <section className="grid max-w-[860px] gap-5">
-      <p className="max-w-[62ch] leading-8 text-slate-700 dark:text-slate-300">
+    <section className="grid w-full gap-5 lg:max-w-215">
+      <p className="w-full leading-8 text-slate-700 dark:text-slate-300 sm:max-w-124">
         Technologies I actively use across day-to-day development, architecture,
         and product delivery.
       </p>

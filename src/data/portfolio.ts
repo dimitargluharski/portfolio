@@ -2,19 +2,6 @@ import type { Experience, ExperienceProject, Skill } from '../types'
 
 export const experienceProjects: ExperienceProject[] = [
   {
-    id: 'sellercloud-delta',
-    title: 'SellerCloud Delta',
-    summary: [
-      'As a Software Engineer at Descartes, I contribute to advanced cloud-based solutions for e-commerce by optimizing front-end interfaces, improving user experience, and supporting seamless integration of new features and technologies.',
-      'SellerCloud Delta is a next-generation cloud platform enabling online retailers to manage sales across multiple channels (Amazon, eBay, Walmart, etc.). I focused on creating intuitive and efficient user interfaces to support automation of inventory, fulfillment, logistics, pricing, and analytics.',
-    ],
-    highlights: [
-      'Developed and optimized modern, user-friendly front-end interfaces',
-      'Collaborated with designers to integrate evolving UI/UX concepts and functionality',
-      'Enhanced performance, accessibility, and responsiveness across multiple products',
-    ],
-  },
-  {
     id: 'skustack-lens',
     title: 'SkuStack Lens',
     summary: [
@@ -26,6 +13,19 @@ export const experienceProjects: ExperienceProject[] = [
       'Improved workflows for warehouse operations and inventory movement tracking',
       'Built and refined interfaces with React, XState, and TailwindCSS',
       'Contributed to 3D visualization initiatives for warehouse mapping and analysis',
+    ],
+  },
+  {
+    id: 'sellercloud-delta',
+    title: 'SellerCloud Delta',
+    summary: [
+      'As a Software Engineer at Descartes, I contribute to advanced cloud-based solutions for e-commerce by optimizing front-end interfaces, improving user experience, and supporting seamless integration of new features and technologies.',
+      'SellerCloud Delta is a next-generation cloud platform enabling online retailers to manage sales across multiple channels (Amazon, eBay, Walmart, etc.). I focused on creating intuitive and efficient user interfaces to support automation of inventory, fulfillment, logistics, pricing, and analytics.',
+    ],
+    highlights: [
+      'Developed and optimized modern, user-friendly front-end interfaces',
+      'Collaborated with designers to integrate evolving UI/UX concepts and functionality',
+      'Enhanced performance, accessibility, and responsiveness across multiple products',
     ],
   },
   {
@@ -90,7 +90,10 @@ export const stack: string[] = [
   'React',
   'JavaScript',
   'TypeScript',
+  'C#',
+  'VB',
   'REST APIs',
+  'CI/CD',
   'Node.js',
   'GitHub',
   'Docker',
@@ -103,5 +106,6 @@ export const stack: string[] = [
   'Next.js',
   'HTML',
   'CSS',
+  'WebGL',
   'Three.js',
 ]

@@ -1,9 +1,6 @@
 import { useState } from 'react'
 import { currentExperience, experienceProjects } from '../data/portfolio'
 
-const sectionLabel =
-  'font-mono text-xs uppercase tracking-[0.14em] text-slate-700 dark:text-slate-400'
-
 const tabBase =
   'inline-flex min-h-9 cursor-pointer items-center justify-center rounded-full border border-slate-400/80 bg-slate-50 px-3.5 font-mono text-[11px] uppercase tracking-[0.12em] text-slate-950 transition-colors hover:border-slate-500 hover:bg-white focus-visible:border-slate-500 focus-visible:bg-white dark:border-slate-700 dark:bg-transparent dark:text-slate-100 dark:hover:border-slate-600 dark:hover:bg-slate-800/70 dark:focus-visible:border-slate-600 dark:focus-visible:bg-slate-800/70'
 
@@ -18,8 +15,8 @@ export function ExperiencePage() {
     experienceProjects[0]
 
   return (
-    <section className="grid max-w-[860px] gap-5">
-      <h2 className="max-w-[18ch] font-serif text-4xl leading-[0.98] tracking-[-0.03em] text-slate-950 dark:text-slate-100 sm:text-5xl">
+    <section className="grid w-full gap-5 lg:max-w-215">
+      <h2 className="w-full max-w-80 font-serif text-3xl leading-tight tracking-tight text-slate-950 dark:text-slate-100 sm:max-w-96 sm:text-4xl">
         {currentExperience.role}
       </h2>
 
@@ -57,7 +54,6 @@ export function ExperiencePage() {
 
       {experienceView === 'overview' ? (
         <article className="grid gap-3" role="tabpanel">
-          <h3 className="text-xl font-semibold text-slate-950 dark:text-slate-100">Role overview</h3>
           <div className="grid gap-3.5">
             {currentExperience.summary.map((paragraph) => (
               <p key={paragraph} className="leading-8 text-slate-700 dark:text-slate-300">
@@ -66,7 +62,6 @@ export function ExperiencePage() {
             ))}
           </div>
 
-          <p className={sectionLabel}>Responsibilities</p>
           <ul className="grid list-disc gap-2 pl-5 text-slate-700 dark:text-slate-300">
             {currentExperience.responsibilities.map((item) => (
               <li key={item}>{item}</li>
@@ -90,7 +85,6 @@ export function ExperiencePage() {
             ))}
           </div>
 
-          <h3 className="text-xl font-semibold text-slate-950 dark:text-slate-100">{activeProject.title}</h3>
           <div className="grid gap-3.5">
             {activeProject.summary.map((paragraph) => (
               <p key={paragraph} className="leading-8 text-slate-700 dark:text-slate-300">
@@ -99,7 +93,9 @@ export function ExperiencePage() {
             ))}
           </div>
 
-          <p className={sectionLabel}>Key contributions</p>
+          <p className="font-mono text-xs font-extrabold uppercase tracking-[0.14em] text-slate-900 dark:text-slate-100">
+            Key contributions
+          </p>
           <ul className="grid list-disc gap-2 pl-5 text-slate-700 dark:text-slate-300">
             {activeProject.highlights.map((item) => (
               <li key={item}>{item}</li>
